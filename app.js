@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyACNVOc0XnWfoBbVb5OIchMrJlpOwIpI2c",
@@ -29,11 +26,11 @@ $("#add-employee").on("click", function () {
     var date = $("#date-input").val().trim();
     var rate = $("#rate-input").val().trim();
 
-    
+    var convertedDate = moment(date).format("X");
     database.ref().push({
         name: name,
         role: role,
-        date: date,
+        date: convertedDate,
         rate: rate
     });
 });
@@ -55,9 +52,11 @@ database.ref().orderByChild("dataAdded").limitToLast(1).on("child_added", functi
     var rateRow = $("<td>");
     var billedRow = $("<td>");
     
+    var dateConverted = moment.unix(sv.date).format('L');
+    
     nameRow.text(sv.name);
     roleRow.text(sv.role);
-    dateRow.text(sv.date);
+    dateRow.text(dateConverted);
     monthsWorkedRow.text(" ");
     rateRow.text(sv.rate);
     billedRow.text(" ");
@@ -106,4 +105,3 @@ database.ref().orderByChild("dataAdded").limitToLast(1).on("child_added", functi
 //         employee: initEmployee
 //     });
 // });
->>>>>>> 307e720c2ff2f2640ebb9cedb741461bc2a63380
