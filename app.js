@@ -26,6 +26,7 @@ $("#add-employee").on("click", function () {
     var date = $("#date-input").val().trim();
     var rate = $("#rate-input").val().trim();
 
+    
     database.ref().push({
         name: name,
         role: role,
@@ -46,7 +47,7 @@ database.ref().orderByChild("dataAdded").limitToLast(1).on("child_added", functi
     var newRow = $("<tr>");
     var nameRow = $("<td>");
     var roleRow = $("<td>");
-    var dateRow = $("<d>");
+    var dateRow = $("<td>");
     var monthsWorkedRow = $("<td>");
     var rateRow = $("<td>");
     var billedRow = $("<td>");
