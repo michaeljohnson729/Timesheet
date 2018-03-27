@@ -15,12 +15,24 @@ firebase.initializeApp(config);
 // Assign the reference to the database to a variable named 'database'
 var database = firebase.database();
 
-
 // Initial Values
 var initName = "No One Yet";
 var initRole = "No Roles";
 var initDate = "No Dates Yet";
 var initRate = "No Rates Yet";
+
+var initEmployee = {
+    name: initName,
+    role: initRole,
+    date: initDate,
+    rate: initRate
+};
+
+var initEmpArray = [initEmployee];
+
+database.ref().set({
+    employeeArr: initEmpArray
+});
 
 
 // --------------------------------------------------------------
@@ -32,6 +44,14 @@ database.ref().on("value", function (snapshot) {
   // If Firebase has a highPrice and highBidder stored (first case)
   if (snapshot.child("name").exists() && snapshot.child("highPrice").exists()) {
 
+
+    // employeeArray = snapshot.val();
+
+    // var anotherEmp
+
+    // employeeArray.push(anotherEmp)
+
+    // database.re.set()
     // Set the variables for highBidder/highPrice equal to the stored values in firebase.
     highBidder = snapshot.val().highBidder;
     highPrice = snapshot.val().highPrice;
